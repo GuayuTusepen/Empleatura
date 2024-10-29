@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EmpleaTura - Empleos en Buenaventura</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #eef1f6;
+    }
+    header {
+      background: #32658a;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #20475c;
+    }
+    nav a {
+      color: #fff;
+      padding: 15px 20px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+    }
+    nav a:hover {
+      background: #467b9d;
+    }
+    .container {
+      width: 80%;
+      margin: auto;
+      overflow: hidden;
+      padding: 20px;
+      background: #ffffff;
+    }
+    section {
+      margin: 20px 0;
+      padding: 15px;
+      border: 1px solid #ccc;
+      background: #eef1f6;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: #32658a;
+      color: #fff;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+    .job-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      background: #e0f7fa;
+      border: 1px solid #004d99;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    .job-card:nth-child(2) { background: #ffcdd2; }
+    .job-card:nth-child(3) { background: #d1c4e9; }
+    .job-card i {
+      font-size: 1.5em;
+      color: #004d99;
+    }
+    .job-card h3 {
+      margin: 0;
+      font-size: 1.2em;
+      color: #004d99;
+    }
+    .form-container {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background: #f4f4f4;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .form-container h2 {
+      color: #004d99;
+    }
+    .form-container input, .form-container textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+    .form-container button {
+      background-color: #004d99;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .form-container button:hover {
+      background-color: #32658a;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>EmpleaTura</h1>
+  <p>Plataforma para Reducir el Desempleo en Buenaventura</p>
+</header>
+
+<nav>
+  <a href="#" onclick="showForm('ofertas')">Ofertas de Empleo</a>
+  <a href="#" onclick="showForm('capacitacion')">Capacitación</a>
+  <a href="#" onclick="showForm('perfil')">Perfil Profesional</a>
+  <a href="#" onclick="showForm('asesoria')">Asesoría Virtual</a>
+  <a href="#" onclick="showForm('alertas')">Alertas Personalizadas</a>
+</nav>
+
+<div class="container">
+  <section>
+    <h2>Últimas Ofertas de Empleo</h2>
+    <p>Haz clic en cada oferta para dejar tus datos:</p>
+    <div class="job-card" onclick="showForm('job1')">
+      <div>
+        <h3>Auxiliar de Operaciones</h3>
+        <p><i class="fas fa-building"></i> TEMPORAL DEL CARIBE S.A.S</p>
+        <p><i class="fas fa-map-marker-alt"></i> Buenaventura, Valle del Cauca</p>
+        <p><i class="fas fa-dollar-sign"></i> $1,300,000</p>
+      </div>
+      <i class="fas fa-briefcase"></i>
+    </div>
+    <div class="job-card" onclick="showForm('job2')">
+      <div>
+        <h3>Asesor de Ventas</h3>
+        <p><i class="fas fa-building"></i> COMFENALCO VALLE</p>
+        <p><i class="fas fa-map-marker-alt"></i> Buenaventura, Valle del Cauca</p>
+        <p><i class="fas fa-dollar-sign"></i> $1,819,000</p>
+      </div>
+      <i class="fas fa-store"></i>
+    </div>
+    <div class="job-card" onclick="showForm('job3')">
+      <div>
+        <h3>Auxiliar de Farmacia</h3>
+        <p><i class="fas fa-building"></i> Empresa del sector salud</p>
+        <p><i class="fas fa-map-marker-alt"></i> Buenaventura, Valle del Cauca</p>
+        <p><i class="fas fa-dollar-sign"></i> $1,500,000</p>
+      </div>
+      <i class="fas fa-pills"></i>
+    </div>
+  </section>
+
+  <div id="form-container" class="form-container">
+    <h2>Déjanos tus datos</h2>
+    <form id="data-form">
+      <input type="text" id="nombre" placeholder="Nombre completo" required>
+      <input type="email" id="correo" placeholder="Correo electrónico" required>
+      <input type="text" id="direccion" placeholder="Dirección" required>
+      <input type="text" id="ciudad" placeholder="Ciudad" required>
+      <input type="number" id="edad" placeholder="Edad" required min="1">
+      <textarea id="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2023 EmpleaTura. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+  function showForm(section) {
+    const formContainer = document.getElementById('form-container');
+    formContainer.style.display = 'block';
+    
+    const titleMap = {
+      'capacitacion': 'Déjanos tus datos para Capacitación',
+      'perfil': 'Déjanos tus datos para Perfil Profesional',
+      'asesoria': 'Déjanos tus datos para Asesoría Virtual'
+    };
+
+    if (titleMap[section]) {
+      formContainer.querySelector('h2').textContent = titleMap[section];
+    } else {
+      formContainer.querySelector('h2').textContent = 'Déjanos tus datos para la oferta seleccionada';
+    }
+
+    // Resetea el formulario
+    document.getElementById('data-form').reset();
+  }
+</script>
+
+</body>
+</html>
